@@ -1,0 +1,21 @@
+{
+    "dataset": {
+        "batch_size": 64
+    },
+
+    "model": {
+        "num_layers": 2
+    },
+
+    "train": {
+        "lr": 0.001,
+        "epochs": 600,
+        "device": "gpu"
+    },
+
+    "output": {
+        "prefix": "training",
+        "model_dir": "training_models",
+        "tensorboard_logs": "training_logs"
+    }
+}
