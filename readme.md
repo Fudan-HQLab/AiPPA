@@ -1,7 +1,7 @@
 # AiPPA
 A GNN Model for Protein-Protein Affinity Prediction without Protein Complex
 ## Dependencies
-AiPPA was tested on Python 3.9 with PyG 2.3. To install all dependencies, directly run:
+AiPPA was build and tested on Python 3.9 with PyG 2.3. To install all dependencies, directly run:
 ```
 cd AiPPA-main
 conda env create -f environment.yml
