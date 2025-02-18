@@ -50,11 +50,9 @@ Run `Runfile.py` to train.
 
 Run `BenchmarkTest.py` to test on your own dataset.
 
-#AiPPA_MCdesign
+# AiPPA_MCdesign
 ## Description
-AiPPA_MCdesign contains the code for de novo nanobody design in our submitted manuscript "De novo nanobody design using graph neural networks and thermodynamic Monte Carlo sampling".
-
-This code utilizes the AiPPA software for protein affinity prediction and incorporates the Monte Carlo search method for optimizing nanobody design.
+AiPPA_MCdesign contains the code for de novo nanobody design that integrates AiPPA with the thermodynamic Monte Carlo sampling method, as described in our submitted manuscript: "De novo nanobody design using graph neural networks and thermodynamic Monte Carlo sampling."
 
 All related code is organized within the `AiPPA_MCdesign` folder.
 
