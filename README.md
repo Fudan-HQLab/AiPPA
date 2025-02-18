@@ -2,7 +2,7 @@
 
 ## Description
 
-AiPPA is a GNN model for protein-protein binding free energy prediction without the need for the protein complex structures
+AiPPA is a GNN model for protein-protein binding free energy prediction without the need for the protein complex structures.
 
 ## Dependencies
 AiPPA was built and tested on Python 3.9 with PyG 2.3. To install all dependencies, directly run:
