@@ -38,7 +38,6 @@ class Training:
                 y = batch.y.to(self.device)
                 batch = batch.to(self.device)
                 pred = self.model(data=batch)
-                # print(f'y_shape: {y.shape}')
                 loss = self.loss_fn(pred.squeeze(1), y)
                 # begin opt
                 self.opt.zero_grad()

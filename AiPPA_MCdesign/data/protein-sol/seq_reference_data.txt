@@ -1,0 +1,40 @@
+
+# Niwa population 3049 ids matched, and a further 653 excluded by MEMBRANE_EXCLUDE
+# Niwa - following averages and std deviations refer to the 3049-653 population
+# Niwa - following data segment from seq_compositions_perc_pipeline.pl followed by seq_compositions_stats_pipeline w/ STATS_MODE unset
+# Added POP, TOP, LOW to start of transferred data (seq_compositions), for ease of reading
+# Also added the data source to each horizantal data line, for ease of reading
+
+POP, NIWA, AVG, 53.347, DEV, 33.910, N, 2396, TAG, percentage-solubility
+
+POP, NIWA, WHOLE-SEQ,headers,K-R,D-E,naa,totperc,A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,K+R,D+E,K+R-D-E,K+R+D+E,F+W+Y,pI,KyteDoo,abs-charge,FoldIndex,disorder,entropy,betapropensity
+POP, NIWA, WHOLE-SEQ,average, -0.922, -0.983,307.996,100.000,  9.347,  1.360,  5.654,  6.637,  3.456,  7.021,  2.543,  5.668,  4.947,  9.969,  2.754,  3.921,  4.409,  4.697,  5.868,  5.542,  5.307,  6.847,  1.297,  2.755, 10.815, 12.291, -1.476, 23.106,  7.508,  6.693,  0.475,  0.029,  0.143, -0.084,  4.067,  0.993
+POP, NIWA, WHOLE-SEQ,std-dev,  3.438,  2.759,178.157,  0.000,  2.752,  1.217,  1.614,  2.132,  1.409,  2.287,  1.289,  1.835,  2.327,  2.568,  1.114,  1.557,  1.632,  1.844,  2.183,  1.876,  1.743,  2.017,  0.994,  1.383,  2.923,  2.586,  3.708,  4.088,  2.529,  1.854,  0.025,  0.027,  0.080,  0.021,  0.093,  0.026
+
+TOP, NIWA, AVG, 113.241, DEV, 8.620, N, 145, TAG, percentage-solubility
+
+TOP, NIWA, WHOLE-SEQ,headers,K-R,D-E,naa,totperc,A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,K+R,D+E,K+R-D-E,K+R+D+E,F+W+Y,pI,KyteDoo,abs-charge,FoldIndex,disorder,entropy,betapropensity
+TOP, NIWA, WHOLE-SEQ,average,  1.042, -1.529,188.055,100.000,  8.993,  1.277,  6.064,  7.593,  2.964,  6.639,  2.259,  5.472,  6.560,  9.202,  3.041,  3.774,  4.125,  4.691,  5.518,  5.770,  5.464,  7.112,  1.052,  2.431, 12.078, 13.657, -1.579, 25.735,  6.447,  6.572,  0.462,  0.047,  0.089, -0.084,  3.995,  0.986
+TOP, NIWA, WHOLE-SEQ,std-dev,  4.125,  3.843,122.263,  0.000,  3.163,  1.502,  2.193,  2.973,  1.697,  2.544,  1.628,  1.989,  3.529,  2.816,  1.642,  1.941,  2.154,  2.685,  2.740,  2.226,  2.097,  2.674,  1.094,  1.514,  4.786,  3.540,  6.298,  5.586,  2.709,  2.227,  0.033,  0.045,  0.109,  0.026,  0.115,  0.032
+
+LOW, NIWA, AVG, 5.208, DEV, 1.747, N, 125, TAG, percentage-solubility
+
+LOW, NIWA, WHOLE-SEQ,headers,K-R,D-E,naa,totperc,A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,K+R,D+E,K+R-D-E,K+R+D+E,F+W+Y,pI,KyteDoo,abs-charge,FoldIndex,disorder,entropy,betapropensity
+LOW, NIWA, WHOLE-SEQ,average, -2.651, -0.520,437.096,100.000,  8.922,  1.228,  5.438,  5.957,  3.800,  6.932,  2.923,  5.307,  3.812, 10.676,  2.674,  4.060,  4.525,  4.901,  6.463,  5.892,  5.369,  6.001,  1.833,  3.286, 10.275, 11.395, -1.120, 21.670,  8.918,  6.988,  0.473,  0.016,  0.150, -0.082,  4.113,  0.992
+LOW, NIWA, WHOLE-SEQ,std-dev,  2.618,  2.230,204.698,  0.000,  2.227,  0.743,  1.187,  1.547,  1.272,  1.912,  1.117,  1.682,  1.387,  2.481,  0.906,  1.623,  1.274,  1.557,  1.764,  1.517,  1.470,  1.585,  0.956,  1.565,  1.793,  1.623,  1.643,  2.998,  2.599,  1.476,  0.021,  0.011,  0.060,  0.020,  0.056,  0.021
+
+
+# calc_flag, signed_diff_zscore, y/yes or n/no to include or not in prediction, taken from p-value of overall correlations
+# also avoid most straight linear combinations of aas in prediction
+# then, in the prediction scheme, for each feature to be included (y/n) we will have:
+# feature x, let xL = x avg in LOW set, xT = x avg in TOP set, and measured prop y, yL = avg in LOW ser, yT = avg in TOP set
+# for feature value x:
+# if x < xL, x=xL or if x > xT, x=xT, and predicted y = yL + [(x-xL)/( xT-xL)]*(yT-yL)
+# followed by linear combination with abs value of zscore_diff for each x/feature
+
+# our current (hopefully FINAL) list of 10 features for prediction is given in as y/n
+
+ZDF,NIWA,WHOLE-SEQ,headers,K-R,D-E,naa,totperc,A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y,K+R,D+E,K+R-D-E,K+R+D+E,F+W+Y,pI,KyteDoo,abs-charge,FoldIndex,disorder,entropy,betapropensity
+ZDF, NIWA, WHOLE-SEQ, zscore-diff,     1.096,    -0.333,    -1.523,     0.000,     0.026,     0.043,     0.370,     0.724,    -0.563,    -0.132,    -0.484,     0.090,     1.118,    -0.557,     0.288,    -0.160,    -0.234,    -0.099,    -0.419,    -0.065,     0.053,     0.522,    -0.762,    -0.555,     0.548,     0.876,    -0.116,     0.947,    -0.931,    -0.225,    -0.390,     1.105,    -0.711,    -0.103,    -1.382,    -0.258
+ZDF, NIWA, WHOLE-SEQ, use_for_prob,y,n,y,n,n,n,n,n,n,n,y,n,n,y,n,n,n,n,n,n,n,y,n,n,n,y,n,n,y,n,n,y,y,n,y,n
+

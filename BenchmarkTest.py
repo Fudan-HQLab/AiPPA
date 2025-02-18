@@ -59,8 +59,8 @@ config = {
     "font.size": 8,
     "font.style": 'normal',
     "font.weight": 'normal',
-    "xtick.direction": "in",  # x轴刻度向内
-    "ytick.direction": "in"  # y轴刻度向内
+    "xtick.direction": "in",  
+    "ytick.direction": "in"  
 
 }
 rcParams.update(config)
@@ -83,14 +83,14 @@ ax = plt.gca()
 plt.xlim(-21, 1)
 plt.ylim(-21, 1)
 
-yminorLocator = MultipleLocator(1)  # 根据主刻度值，仔细设置次刻度标签为1的倍数
+yminorLocator = MultipleLocator(1)  
 ax.yaxis.set_minor_locator(yminorLocator)
-ymajorLocator = MultipleLocator(5)  # 根据主刻度值，仔细设置次刻度标签为1的倍数
+ymajorLocator = MultipleLocator(5)  
 ax.yaxis.set_major_locator(ymajorLocator)
 
-xminorLocator = MultipleLocator(1)  # 根据主刻度值，仔细设置次刻度标签为1的倍数
+xminorLocator = MultipleLocator(1)  
 ax.xaxis.set_minor_locator(xminorLocator)
-xmajorLocator = MultipleLocator(5)  # 根据主刻度值，仔细设置次刻度标签为1的倍数
+xmajorLocator = MultipleLocator(5)  
 ax.xaxis.set_major_locator(xmajorLocator)
 
 fig = plt.gcf()

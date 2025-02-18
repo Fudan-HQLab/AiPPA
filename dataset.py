@@ -65,11 +65,11 @@ class GNNDataset(Dataset):
         data_s_pos = Data(pos=x_s[:, 2:5])
         data_t_pos = Data(pos=x_t[:, 2:5])
         if self.phase == 'train':
-            # random flip and rotate
+            # random flip&rotate
             self.transform(data_s_pos)
             self.transform(data_t_pos)
 
-        # center
+        
         self.trans(data_s_pos)
         self.trans(data_t_pos)
 

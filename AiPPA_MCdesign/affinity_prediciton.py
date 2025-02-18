@@ -2,12 +2,13 @@ import argparse
 import warnings
 from typing import Any
 from torch_geometric.data import Data
-from model import BA
+from AiPPA import BA
 from torch_geometric.transforms import Center
 from Bio.PDB import SASA, PDBParser
 import numpy as np
 from scipy.spatial.distance import cdist
 import torch
+import pickle
 
 
 class PairData(Data):
@@ -22,7 +23,6 @@ class PairData(Data):
 class Features:
     def __init__(self, struct):
         self.struct = struct
-        pass
 
     def get_res_features(self, res):
         code_map = {'VAL': 'V', 'ILE': 'I', 'LEU': 'L', 'GLU': 'E',
@@ -82,18 +82,20 @@ class CalBA:
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         self.model = BA(self.device, layers=2)
         self.model = self.model.to(self.device)
-        self.model.load_state_dict(torch.load('model/model_trained.pth'))
+        self.model.load_state_dict(torch.load('data/model_trained.pth'))
 
     def affinity(self, receptor_file, ligand_file):
         # time1 = time.time()
         warnings.filterwarnings('ignore')
-        # load pre_train_models
         parser = PDBParser()
-        rep = parser.get_structure('', receptor_file)
+        # rep = parser.get_structure('', receptor_file)
         lig = parser.get_structure('', ligand_file)
 
-        x_s, edge_features_s, edge_index_s \
-            = Features(rep).structure2graph(edge_threshold=8)
+        # calculate target protein
+        with open(receptor_file, 'rb') as f:
+            x_s, edge_features_s, edge_index_s = pickle.load(f)
+        # x_s, edge_features_s, edge_index_s \
+        #     = Features(rep).structure2graph(edge_threshold=8)
 
         x_t, edge_features_t, edge_index_t \
             = Features(lig).structure2graph(edge_threshold=8)
@@ -129,20 +131,6 @@ class CalBA:
         return round(ba, 3)
 
 
-def running():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-pA', type=str, required=True,
-                        help=f'ProteinS PDB file\n')
-    parser.add_argument('-pB', type=str, required=True,
-                        help=f'ProteinB PDB file\n')
-    args = parser.parse_args()
-
-    pA = args.pA
-    pB = args.pB
-    ba = CalBA().affinity(pA, pB)
-
-    print(f'The Predicted BA is:{ba:.3f} kcal/mol')
-
-
 if __name__ == '__main__':
-    running()
+    a = CalBA().affinity('TL1A.pkl', 'designedNb.pdb')
+    print(a)
