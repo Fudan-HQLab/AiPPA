@@ -1,5 +1,5 @@
 # AiPPA
-# Description
+## Description
 AiPPA is a GNN model for protein-protein affinity prediction without protein complex structures
 
 ## Dependencies
@@ -60,7 +60,7 @@ All related code is organized within the `AiPPA_MCdesign` folder.
 We used [IgFold](https://www.nature.com/articles/s41467-023-38063-x) to predict the 3D structure of a nanobody. Please follow the [instructions](https://github.com/Graylab/IgFold) for installation.
 
 ## Quick start
-Navigate to the `AiPPA_MCdesign` folder where the de novo nanobody design code is located:
+Navigate to the `AiPPA_MCdesign` folder where the code for de novo nanobody design is located:
 
 ```
 cd AiPPA_MCdesign
