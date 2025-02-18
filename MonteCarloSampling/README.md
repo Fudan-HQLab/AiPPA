@@ -61,5 +61,5 @@ The amino-acid mutation probabilities for CDRs should be organised in the same f
 
 For length transition probabilities, you only need to define the probability for each CDR length. You can then generate the corresponding matrix using the script `generate_length_transfer_file.py` located in the `data` folder.
 
-## Authors
+## Authors and article to be cited
 * Lei Wang, Xiaoming He, Gaoxing Guo, Xinzhou Qian, and Qiang Huang*. De novo nanobody design using graph neural networks and thermodynamic Monte Carlo sampling. (Submitted)
